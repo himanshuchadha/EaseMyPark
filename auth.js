@@ -34,13 +34,31 @@ function clearErrorMessage() {
   errorElement.style.display = "none";
 }
 
+function displaySuccessMessage(message) {
+  const successElement = document.getElementById("success-message");
+  successElement.innerText = message;
+  successElement.style.display = "block";
+
+  // Hide the success message after 3.5 seconds
+  setTimeout(() => {
+    clearSuccessMessage();
+  }, 3500); // 3500 milliseconds = 3.5 seconds
+}
+
+function clearSuccessMessage() {
+  const successElement = document.getElementById("success-message");
+  successElement.innerText = "";
+  successElement.style.display = "none";
+}
+
 function isValidEmail(email) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
 }
 
 function isValidPassword(password) {
-  return password.length >= 8;
+  const minLength = 8;
+  return password.trim().length >= minLength; // Check if password is at least 8 characters long and not empty or whitespace
 }
 
 function validateForm(email, password) {
@@ -49,7 +67,9 @@ function validateForm(email, password) {
     return false;
   }
   if (!isValidPassword(password)) {
-    displayErrorMessage("Password must be at least 8 characters long.");
+    displayErrorMessage(
+      "Password must be at least 8 characters long and not empty or whitespace."
+    );
     return false;
   }
   return true;
@@ -96,7 +116,7 @@ function login() {
     })
     .catch((error) => {
       console.error("Error: ", error.message);
-      displayErrorMessage(error.message);
+      displayErrorMessage("Password or Gmail incorrect");
     })
     .finally(() => {
       hideLoadingSpinner();
@@ -136,7 +156,7 @@ function handlePasswordReset(email) {
     .auth()
     .sendPasswordResetEmail(email)
     .then(() => {
-      displayErrorMessage("Password reset email sent.");
+      displaySuccessMessage("Password reset email sent.");
     })
     .catch((error) => {
       console.error("Error: ", error.message);
