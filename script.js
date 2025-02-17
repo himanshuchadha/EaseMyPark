@@ -170,7 +170,7 @@ function logout() {
     .signOut()
     .then(() => {
       console.log("User logged out");
-      window.location.href = "https://himanshuchadha.github.io/New-folder/"; // Redirect to login page after logout
+      window.location.href = "/"; // Redirect to login page after logout
     })
     .catch((error) => {
       console.error("Error logging out: ", error);
