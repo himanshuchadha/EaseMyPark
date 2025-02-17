@@ -27,6 +27,11 @@ function displayErrorMessage(message) {
   const errorElement = document.getElementById("error-message");
   errorElement.innerText = message;
   errorElement.style.display = "block";
+
+  // Hide the error message after 3.5 seconds
+  setTimeout(() => {
+    clearErrorMessage();
+  }, 3500); // 3500 milliseconds = 3.5 seconds
 }
 
 function clearErrorMessage() {
@@ -95,35 +100,26 @@ function reserveSlot(slotId) {
   const userRef = db.collection("users").doc(user.uid);
 
   showLoadingSpinner();
-  userRef
-    .get()
-    .then((doc) => {
-      if (doc.exists && doc.data().reservedSlot) {
-        displayErrorMessage(
-          "You already have a reserved slot. Please make it available before reserving a new one."
-        );
-        hideLoadingSpinner();
-      } else {
-        // Reserve the slot
-        db.collection("slots")
-          .doc(slotId)
-          .set({ status: "Reserved", userId: user.uid })
-          .then(() => {
-            userRef.set({ reservedSlot: slotId }, { merge: true });
-            displaySuccessMessage("Slot reserved successfully.");
-          })
-          .catch((error) => {
-            displayErrorMessage("Error reserving slot: " + error.message);
-          })
-          .finally(() => {
-            hideLoadingSpinner();
-          });
-      }
-    })
-    .catch((error) => {
-      displayErrorMessage("Error checking user slot: " + error.message);
+  userRef.get().then((doc) => {
+    if (doc.exists && doc.data().reservedSlot) {
+      displayErrorMessage(
+        "You already have a reserved slot. Please make it available before reserving a new one."
+      );
       hideLoadingSpinner();
-    });
+    } else {
+      // Reserve the slot
+      db.collection("slots")
+        .doc(slotId)
+        .set({ status: "Reserved", userId: user.uid })
+        .then(() => {
+          userRef.set({ reservedSlot: slotId }, { merge: true });
+          displaySuccessMessage("Slot reserved successfully.");
+        })
+        .finally(() => {
+          hideLoadingSpinner();
+        });
+    }
+  });
 }
 
 // Function to make a slot available
@@ -144,9 +140,6 @@ function makeSlotAvailable(slotId) {
     .then(() => {
       userRef.set({ reservedSlot: null }, { merge: true });
       displaySuccessMessage("Slot is now available.");
-    })
-    .catch((error) => {
-      displayErrorMessage("Error changing slot status: " + error.message);
     })
     .finally(() => {
       hideLoadingSpinner();
