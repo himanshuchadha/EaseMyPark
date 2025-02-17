@@ -1,0 +1,122 @@
+/* Add this to your style.css file */
+body {
+  font-family: Arial, sans-serif; /* Use a clear, readable font */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(
+    135deg,
+    #f0f4f8 0%,
+    #d9e2ec 100%
+  ); /* Soft gradient */
+}
+
+.container {
+  display: flex;
+  width: 80%; /* Set the width of the container to 80% of the screen */
+}
+
+.project-name {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start; /* Align project name to the left */
+  align-items: center;
+  text-align: left; /* Align text to the left */
+  padding-left: 50px; /* Add some padding to the left to move away from left wall */
+}
+.project-logo {
+  width: 200px; /* Adjust the size of the logo */
+  height: auto;
+  margin-right: 20px; /* Add some spacing between the logo and the title */
+}
+.project-name h1 {
+  font-size: 70px; /* Make the project name big */
+  color: #333;
+  margin: 0;
+}
+
+.login-container {
+  flex: 1;
+  max-width: 400px;
+  padding: 20px;
+  margin-right: 50px; /*Add some margin to the right change this to move away from right wall */
+  background-color: linear-gradient(135deg, whitesmoke 0%, burlywood 100%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+}
+
+.login-container input,
+.login-container button {
+  width: calc(100% - 20px); /* Full width minus padding for alignment */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.login-container button {
+  background-color: burlywood;
+  color: #000;
+  border: 1px solid grey;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/* Style for Google Button */
+.google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #cccccc;
+}
+
+.google-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+#loading-spinner {
+  display: none;
+  margin: 20px auto;
+  border: 6px solid #f3f3f3; /* Light grey */
+  border-top: 6px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#error-message {
+  color: red;
+  margin-top: 20px;
+}

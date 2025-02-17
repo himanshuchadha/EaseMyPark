@@ -3,165 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Parking Slot</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Ease My Park</title>
+    <link rel="stylesheet" href="login.style.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <link rel="icon" type="image/x-icon" href="logo.png" />
   </head>
   <body>
     <div class="container">
-      <div class="background">
-        <button class="logout-button" onclick="logout()">Logout</button>
-        <div class="heading">
-          <h1>Ez My Park</h1>
-        </div>
-        </div>
+      <div class="project-name">
+        <img src="logo rectangle.png" alt="Project Logo" class="project-logo" />
+        <!-- Add your logo image path -->
+        <h1>Ease My Park</h1>
+        <!-- Add your project name here -->
       </div>
-
-      <div class="area">
-        <h1 class="instructions">Book your Parking-</h1>
-        <div class="slot-count">
-          <h4 id="available-count">Available Slots: 0</h4>
-          <h4 id="Reserved-count">Reserved Slots: 0</h4>
-          <h4 id="Total-count">Total slots: 0</h4>
-        </div>
+      <div class="login-container">
+        <h2>Login / Sign Up</h2>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          aria-label="Email"
+        />
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          aria-label="Password"
+        />
+        <button onclick="signUp()">Sign Up</button>
+        <button onclick="login()">Login</button>
+        <button class="google-button" onclick="googleSignIn()">
+          <img src="google_logo.png" alt="Google Logo" class="google-logo" />
+          Sign in with Google
+        </button>
+        <button
+          onclick="handlePasswordReset(document.getElementById('email').value)"
+        >
+          Reset Password
+        </button>
         <div
           id="error-message"
           aria-live="assertive"
           style="display: none"
         ></div>
         <div id="loading-spinner" class="hidden" aria-hidden="true"></div>
-        <div class="parking-line">
-          <div class="slot-area">
-            <div class="slot" id="slot1" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot2" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot3" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot4" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot5" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot6" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot7" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot8" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot9" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot10" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot11" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-        </div>
-        <div class="markings">
-          <div class="arrow"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="icon">
-            <div class="stop">
-              <h1>STOP</h1>
-            </div>
-            <div style="width: 40px; background-color: white"></div>
-          </div>
-        </div>
-        <div class="parking-line">
-          <div class="slot-area">
-            <div class="slot" id="slot12" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot13" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot14" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot15" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot16" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot17" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="slot-area">
-            <div class="slot" id="slot18" data-text="Available">
-              <span>Available</span>
-            </div>
-          </div>
-          <div class="path">
-            <div class="divide"></div>
-            <div class="divider"></div>
-            <div class="divider"></div>
-            <div
-              style="width: 120px; height: 40px; background-color: white"
-              class="block"
-            ></div>
-          </div>
-        </div>
       </div>
     </div>
-    <footer class="footer">
-      <h4 class="heading">
-        &copy; 2025, students of Sri Chaitanya Techno School, Wagholi-Pune.
-      </h4>
-      <h4 class="heading">
-        Credits:-
-        <ul>
-          <li>Himanshu Chadha</li>
-          <li>Ashvat Pal</li>
-        </ul>
-      </h4>
-    </footer>
-    <!-- Add error message and loading spinner elements -->
-
-    <script src="script.js"></script>
+    <script src="auth.js"></script>
   </body>
 </html>

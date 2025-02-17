@@ -68,7 +68,7 @@ function signUp() {
     .createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       console.log("User signed up: ", userCredential.user);
-      window.location.href = "index.html"; // Redirect after signup
+      window.location.href = "booking.html"; // Redirect after signup
     })
     .catch((error) => {
       console.error("Error: ", error.message);
@@ -92,7 +92,7 @@ function login() {
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       console.log("User logged in: ", userCredential.user);
-      window.location.href = "index.html"; // Redirect after login
+      window.location.href = "booking.html"; // Redirect after login
     })
     .catch((error) => {
       console.error("Error: ", error.message);
@@ -113,7 +113,7 @@ function googleSignIn() {
     .signInWithPopup(provider)
     .then((result) => {
       console.log("User signed in with Google: ", result.user);
-      window.location.href = "index.html"; // Redirect after Google login
+      window.location.href = "booking.html"; // Redirect after Google login
     })
     .catch((error) => {
       if (error.code === "auth/popup-blocked") {
