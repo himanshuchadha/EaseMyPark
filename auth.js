@@ -158,4 +158,4 @@ firebase.auth().onAuthStateChanged((user) => {
 
 // Initialize Firebase App Check
 const appCheck = firebase.appCheck();
-appCheck.activate("your-app-check-public-key", true);
+appCheck.activate("6LfK-dkqAAAAAJyqs_57hudKr2Hr_4qB44L5NgWj", true);
