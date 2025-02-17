@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login / Sign Up</h2>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter your email"
+        aria-label="Email"
+      />
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        aria-label="Password"
+      />
+      <button onclick="signUp()">Sign Up</button>
+      <button onclick="login()">Login</button>
+      <button onclick="googleSignIn()">Sign in with Google</button>
+      <button
+        onclick="handlePasswordReset(document.getElementById('email').value)"
+      >
+        Reset Password
+      </button>
+      <div id="error-message" aria-live="assertive" style="display: none"></div>
+      <div id="loading-spinner" class="hidden" aria-hidden="true"></div>
+    </div>
+    <script src="auth.js"></script>
+  </body>
+</html>
