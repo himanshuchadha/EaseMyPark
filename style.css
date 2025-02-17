@@ -57,6 +57,25 @@ footer {
   ); /* Dark blue-grey to lighter blue-grey */
 }
 
+/* Add this to your styles.css file */
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgb(51, 105, 204);
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: rgb(21, 48, 136);
+}
+
 /* Other Styles */
 .area {
   height: 90vh;
@@ -103,11 +122,13 @@ footer {
 .slot-count {
   justify-items: left;
   padding-left: 40px;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
-p {
-  font-size: 16px;
+.slot-count h4 {
+  color: rgb(51, 105, 204);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 550;
 }
 
 .line {
@@ -149,8 +170,30 @@ ul li {
   list-style: none;
 }
 
+.instructions {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: rgb(51, 105, 204);
+  border: 2px;
+  border-color: #b1b5c2;
+  border-radius: 3px;
+  background-color: transparent;
+  text-align: left;
+  padding-left: 40px;
+  padding-top: 25px;
+}
+
+#error-message {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(21, 48, 136);
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .heading {
     font-size: 16px;
   }
@@ -187,5 +230,8 @@ ul li {
   }
   .block {
     display: none;
+  }
+  .logout-button {
+    padding: 5px 10px;
   }
 }
