@@ -1,11 +1,11 @@
 // Firebase Initialization
 var firebaseConfig = {
-  apiKey: "AIzaSyAKqdODWQz3sl7H27FDQN85tOd_qNnRYdk",
-  authDomain: "smart-parking-13e29.firebaseapp.com",
-  projectId: "smart-parking-13e29",
-  storageBucket: "smart-parking-13e29.firebasestorage.app",
-  messagingSenderId: "832422095286",
-  appId: "1:832422095286:web:141acda9b641cf7b487917",
+  apiKey: window.env.FIREBASE_API_KEY,
+  authDomain: window.env.FIREBASE_AUTH_DOMAIN,
+  projectId: window.env.FIREBASE_PROJECT_ID,
+  storageBucket: window.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: window.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: window.env.FIREBASE_APP_ID,
 };
 firebase.initializeApp(firebaseConfig);
 var auth = firebase.auth();
