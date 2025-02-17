@@ -170,7 +170,7 @@ function logout() {
     .signOut()
     .then(() => {
       console.log("User logged out");
-      window.location.href = "/"; // Redirect to login page after logout
+      window.location.href = "EaseMyPark/"; // Redirect to login page after logout
     })
     .catch((error) => {
       console.error("Error logging out: ", error);
