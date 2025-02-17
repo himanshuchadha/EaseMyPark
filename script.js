@@ -40,6 +40,23 @@ function clearErrorMessage() {
   errorElement.style.display = "none";
 }
 
+function displaySuccessMessage(message) {
+  const successElement = document.getElementById("success-message");
+  successElement.innerText = message;
+  successElement.style.display = "block";
+
+  // Hide the success message after 3.5 seconds
+  setTimeout(() => {
+    clearSuccessMessage();
+  }, 3500); // 3500 milliseconds = 3.5 seconds
+}
+
+function clearSuccessMessage() {
+  const successElement = document.getElementById("success-message");
+  successElement.innerText = "";
+  successElement.style.display = "none";
+}
+
 // Real-time listener for slots
 db.collection("slots").onSnapshot(
   (querySnapshot) => {
