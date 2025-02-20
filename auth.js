@@ -88,7 +88,6 @@ function signUp() {
     .createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       console.log("User signed up: ", userCredential.user);
-      window.location.href = "booking.html"; // Redirect after signup
     })
     .catch((error) => {
       console.error("Error: ", error.message);
