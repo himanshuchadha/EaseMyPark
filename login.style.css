@@ -1,4 +1,4 @@
-/* Add this to your style.css file */
+/* Existing CSS */
 body {
   font-family: Arial, sans-serif; /* Use a clear, readable font */
   display: flex;
@@ -16,6 +16,8 @@ body {
 .container {
   display: flex;
   width: 80%; /* Set the width of the container to 80% of the screen */
+  flex-direction: row; /* Default flex direction */
+  align-items: center;
 }
 
 .project-name {
@@ -26,11 +28,13 @@ body {
   text-align: left; /* Align text to the left */
   padding-left: 50px; /* Add some padding to the left to move away from left wall */
 }
+
 .project-logo {
   width: 200px; /* Adjust the size of the logo */
   height: auto;
   margin-right: 20px; /* Add some spacing between the logo and the title */
 }
+
 .project-name h1 {
   font-size: 70px; /* Make the project name big */
   color: #333;
@@ -41,8 +45,8 @@ body {
   flex: 1;
   max-width: 400px;
   padding: 20px;
-  margin-right: 50px; /*Add some margin to the right change this to move away from right wall */
-  background-color: linear-gradient(135deg, whitesmoke 0%, burlywood 100%);
+  margin-right: 50px; /* Add some margin to the right to move away from right wall */
+  background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   text-align: center;
@@ -117,6 +121,54 @@ body {
 }
 
 #error-message {
-  color: red;
+  color: burlywood;
   margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1359px) {
+  .container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    padding: 20px 0; /* Add space above and below the container */
+  }
+
+  .project-name {
+    order: 1; /* Change order to place project name and logo above login */
+    flex-direction: column; /* Stack logo and project name vertically */
+    align-items: center; /* Center align items */
+    padding-left: 0; /* Remove left padding */
+    text-align: center; /* Center-align text */
+    margin-bottom: 20px; /* Add some margin below */
+  }
+
+  .project-logo {
+    width: 150px; /* Adjust the size of the logo to be larger */
+    margin: 20px 0; /* Add space above and below the logo to avoid cutting */
+  }
+
+  .login-container {
+    order: 2; /* Ensure login box comes after project name and logo */
+    margin-right: 0; /* Remove right margin */
+    padding: 20px; /* Ensure there's enough padding */
+    width: 90%; /* Adjust the width of the login container */
+  }
+}
+
+/* Adjustments for very small screens (e.g., iPhone SE) */
+@media (max-width: 375px) {
+  .project-logo {
+    width: 120px; /* Adjust the size of the logo for very small screens */
+    margin-top: 20px; /* Add space above the logo */
+    margin-bottom: 10px; /* Add space below the logo */
+  }
+
+  .project-name h1 {
+    font-size: 50px; /* Adjust the size of the project name */
+  }
+
+  .login-container {
+    padding: 10px; /* Ensure there's enough padding */
+    margin-bottom: 20px; /* Add space below the login box */
+  }
 }
