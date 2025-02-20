@@ -228,4 +228,8 @@ ul li {
   .logout-button {
     padding: 5px 10px;
   }
+  #error-message {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
