@@ -28,3 +28,10 @@ new things added:
 new files: --> on html one css and two js
 sign in feature --> with a new sign in page google signin and html
 on slot for each feature --> allows a person to only reserve one slot
+
+21/2/25
+changes made:
+made the ui responsive in the login page(index.html)
+
+new things added:
+#
