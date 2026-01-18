@@ -1,5 +1,5 @@
 window.env = {
-  FIREBASE_API_KEY: "AIzaSyAKqdODWQz3sl7H27FDQN85tOd_qNnRYdk",
+  FIREBASE_API_KEY: "apikeygoogle",
   FIREBASE_AUTH_DOMAIN: "smart-parking-13e29.firebaseapp.com",
   FIREBASE_PROJECT_ID: "smart-parking-13e29",
   FIREBASE_STORAGE_BUCKET: "smart-parking-13e29.firebasestorage.app",
